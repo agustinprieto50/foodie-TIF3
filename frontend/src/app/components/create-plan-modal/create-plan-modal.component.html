@@ -1,0 +1,32 @@
+<div style="text-align: center;">
+    <button type="button" class="btn btn-primary btn-rounded" data-bs-toggle="modal" data-bs-target="#createPlanModal">
+        Crear 
+    </button>
+</div>
+  
+<form (submit)="onSubmit()">
+  <div class="modal fade" id="createPlanModal" tabindex="-1" aria-labelledby="createPlanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="createPlanModalLabel">Crear Plan</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Plan Vegetariano" name="titleInput" [(ngModel)]="title">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                <textarea placeholder="Solo comidas vegetarianas..." class="form-control" id="exampleFormControlTextarea1" rows="3" name="descriptionInput" [(ngModel)]="description"></textarea>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" (click)="refresh()" class="btn btn-primary" data-bs-dismiss="modal">Crear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

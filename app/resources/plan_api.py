@@ -2,18 +2,23 @@ from flask_restful import Resource
 from models.plan import Plan
 from flask import request
 from models_db import db
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
+
 
 class PlanResource(Resource):
+    @jwt_required()
     def post(self):
+        claims = get_jwt_identity()
+        created_by = claims.get('user_id')
         data = request.get_json()
         if data:
             title = data['title']
             description = data['description']
-            created_by = data['created_by']
             plan = Plan(title=title, description=description, created_by=created_by)
             db.session.add(plan)
             db.session.commit()
-            return "Plan created successfuly", 201
+            return "Plan created xsuccessfuly", 201
         return 'Invalid data', 400
 
     def get(self):
@@ -32,6 +37,7 @@ class PlanResource(Resource):
 
 
 class SinglePlanResource(Resource):
+
     def get(self, plan_id):
         plans = Plan.query.filter_by(id=plan_id).all()
         if plans:
@@ -44,7 +50,7 @@ class SinglePlanResource(Resource):
             db.session.delete(plan)
             db.session.commit()
             return 'Plan succesfully deleted', 204
-        return 'No plan found', 404
+        return 'No plan found', 204
 
     def put(self, plan_id):
         plan = Plan.query.filter_by(id=plan_id).all()
@@ -61,7 +67,13 @@ class SinglePlanResource(Resource):
 
 
 
-
+class PlanByUserId(Resource):
+    def get(self, user_id):
+        plans = Plan.query.filter_by(created_by=user_id).all()
+        if plans:
+            all_plans = [plan.to_json() for plan in plans]
+            return all_plans, 200
+        return 'No plans found', 204
             
 
 

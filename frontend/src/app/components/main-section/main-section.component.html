@@ -1,0 +1,17 @@
+<ng-container *ngIf="plans$ | async as plans; else noPlans">
+    <div class="container" style="margin-top: 10px;">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">        
+        <div *ngFor="let plan of plans" class="col">
+          <app-plan-card [planTitle]="plan.title" [planDescription]="plan.description"></app-plan-card>
+        </div>
+      </div>
+    </div>
+</ng-container>
+  
+  <ng-template #noPlans>
+    <div class="rounded-div" style="margin-bottom: 15px;">
+      <h3 style="text-align: center;">No hay planes creados</h3>
+      <app-create-plan-modal></app-create-plan-modal>
+    </div>
+  </ng-template>
+  

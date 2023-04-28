@@ -1,15 +1,18 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_restful import Api
-from resources.plan_api import PlanResource, SinglePlanResource
+from flask_jwt_extended import JWTManager
+from resources.plan_api import PlanResource, SinglePlanResource, PlanByUserId
 from resources.proxy import ProxyResource
 from resources.recipe_api import RecipeResource
+from resources.user_api import UserResource
 from models_db import db
-from models.plan import Plan
 
 
 app = Flask(__name__)
 
+app.config['JWT_SECRET_KEY'] = 'your_secret_key_here'
+jwt = JWTManager(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 with app.app_context():
@@ -22,8 +25,14 @@ migrate = Migrate(app, db)
 api.add_resource(PlanResource, '/api/plan')
 api.add_resource(SinglePlanResource, '/api/plan/<int:plan_id>')
 api.add_resource(ProxyResource, '/api/proxy')    
-api.add_resource(RecipeResource, '/api/recipe')    
+api.add_resource(RecipeResource, '/api/recipe')
+api.add_resource(UserResource, '/api/user') 
+api.add_resource(PlanByUserId, '/api/user_plans/<int:user_id>')  
 
+
+from auth import routes
+    #Importar blueprint
+app.register_blueprint(routes.auth)
 
 app.run(port=8080)
 
