@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,9 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecipesDashboardComponent } from './components/recipes-dashboard/recipes-dashboard.component';
+import { RecipesCardComponent } from './components/recipes-card/recipes-card.component';
+import { AddRecipeToPlanModalComponent } from './components/add-recipe-to-plan-modal/add-recipe-to-plan-modal.component';
 
 
 
@@ -27,7 +31,10 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     PlanCardComponent,
     LogInComponent,
     HomePageComponent,
-    MainDashboardComponent
+    MainDashboardComponent,
+    RecipesDashboardComponent,
+    RecipesCardComponent,
+    AddRecipeToPlanModalComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    NgbModalModule
+    NgbModalModule,
+    MatProgressSpinnerModule
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]

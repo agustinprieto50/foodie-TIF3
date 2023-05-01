@@ -17,6 +17,4 @@ export class MainSectionComponent implements OnInit{
     this.plans$ = this.getPlansService.getPlans();
   }
   
-
- 
 }

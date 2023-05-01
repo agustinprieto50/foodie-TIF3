@@ -1,5 +1,6 @@
 from flask_restful import Resource
 from models.plan import Plan
+from models.recipe import Recipe
 from flask import request
 from models_db import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -53,17 +54,21 @@ class SinglePlanResource(Resource):
         return 'No plan found', 204
 
     def put(self, plan_id):
-        plan = Plan.query.filter_by(id=plan_id).all()
+        plan = Plan.query.filter_by(id=plan_id).first()
         if plan:
             data = request.get_json()
-            for key, value in data:
+            for key, value in data.items():
                 if key == 'title':
                     plan.title = value
-                if key == 'description':
+                elif key == 'description':
                     plan.description = value
+                elif key == 'recipe':
+                    recipe = Recipe(**value)
+                    plan.recipes.append(recipe)
+            db.session.commit()
             return 'Plan successfully updated', 200
-
-        return 'Plan not found', 404
+        else:
+            return 'Plan not found', 404
 
 
 

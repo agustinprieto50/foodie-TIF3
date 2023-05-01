@@ -22,7 +22,7 @@ class ProxyResource(Resource):
         access_token = token['access_token']
         headers = {'Authorization': 'Bearer ' + access_token}
         data = {'method': 'recipes.search.v3', 'format': 'json'}
-        response = requests.get('https://platform.fatsecret.com/rest/server.api', headers=headers, data=data)
+        response = requests.get('https://platform.fatsecret.com/rest/server.api', headers=headers, data=data)       
         return jsonify(response.json()) 
 
 
