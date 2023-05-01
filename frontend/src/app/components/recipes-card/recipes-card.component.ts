@@ -11,6 +11,6 @@ export class RecipesCardComponent {
   @Input() recipeImg:any
   @Input() ingredients: any[] = [];
 
-
+  constructor(){}
 
 }

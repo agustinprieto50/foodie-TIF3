@@ -10,6 +10,6 @@ export class GetRecipesService {
   constructor(private http: HttpClient) { }
   getRecipes(){
     const url = '/api/api/proxy'
-    return this.http.get(url).pipe(take(1))
+    return this.http.get(url).pipe(take(1)) 
   }
 }
