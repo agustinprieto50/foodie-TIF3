@@ -21,9 +21,7 @@
                 <div *ngFor="let ingredient of recipe.recipe_ingredients.ingredient">
                     <p class="card-text multi-line" style="white-space: normal;">- {{ingredient}}</p>
                 </div>
-                <div style="display: flex; margin-top: 10px; justify-content: right; align-items: right;">
-                    <button type="button" class="btn btn-primary">+</button>
-                </div>
+                <app-add-recipe-to-plan-modal></app-add-recipe-to-plan-modal>
             </div>
         </div>
     </div>

@@ -1,1 +1,29 @@
-<p>add-recipe-to-plan-modal works!</p>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Open Modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (submit)="onSubmit()">
+            <label for="plan">Select a plan:</label>
+            <ng-container *ngIf="plans$ | async as plans">
+              <select name="plan" id="plan" [(ngModel)]="selectedPlan">
+                <option *ngFor="let plan of plans" [value]="plan.id" (click)="onSelectPlan(plan.id)">
+                  {{ plan.title }}
+                </option>
+              </select>
+            </ng-container>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
