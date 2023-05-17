@@ -21,7 +21,7 @@
                 <div *ngFor="let ingredient of recipe.recipe_ingredients.ingredient">
                     <p class="card-text multi-line" style="white-space: normal;">- {{ingredient}}</p>
                 </div>
-                <app-add-recipe-to-plan-modal></app-add-recipe-to-plan-modal>
+                <app-add-recipe-to-plan-modal [recipeId]="recipe.recipe_id" style="margin-top: 5px;"></app-add-recipe-to-plan-modal>
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@ class Recipe(db.Model):
     def to_json(self):
         return {
             "recipe_id": self.recipe_id,
-            "recipe_id_fatseecret_sor": self.recipe_id_fatsecret_sor,
+            "recipe_id_fatsecret_sor": self.recipe_id_fatsecret_sor,
             "plan_id": self.plan_id
         }
 

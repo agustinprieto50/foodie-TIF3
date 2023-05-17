@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from resources.plan_api import PlanResource, SinglePlanResource, PlanByUserId
-from resources.proxy import ProxyResource
+from resources.proxy import ProxyResource, ProxyResourceRecipes
 from resources.recipe_api import RecipeResource
 from resources.user_api import UserResource
 from models_db import db
@@ -25,6 +25,7 @@ migrate = Migrate(app, db)
 api.add_resource(PlanResource, '/api/plan')
 api.add_resource(SinglePlanResource, '/api/plan/<int:plan_id>')
 api.add_resource(ProxyResource, '/api/proxy')    
+api.add_resource(ProxyResourceRecipes, '/api/get_recipes/<int:recipe_id>')    
 api.add_resource(RecipeResource, '/api/recipe')
 api.add_resource(UserResource, '/api/user') 
 api.add_resource(PlanByUserId, '/api/user_plans/<int:user_id>')  

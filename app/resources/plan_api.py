@@ -64,6 +64,9 @@ class SinglePlanResource(Resource):
                     plan.description = value
                 elif key == 'recipe':
                     recipe = Recipe(**value)
+                    for i in plan.recipes:
+                        if i.recipe_id_fatsecret_sor == int(recipe.recipe_id_fatsecret_sor):
+                            return 'Recipe already exists on plan', 404
                     plan.recipes.append(recipe)
             db.session.commit()
             return 'Plan successfully updated', 200

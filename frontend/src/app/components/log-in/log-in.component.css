@@ -1,2 +1,33 @@
 
+.container {
+    max-width: 400px;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+  }
   
+  form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ccc;
+  }
+  
+  /* Adjust font sizes for smaller screens */
+  @media screen and (max-width: 576px) {
+    form {
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Center the form on larger screens */
+  @media screen and (min-width: 992px) {
+    .container {
+      margin-top: 100px;
+    }
+  }
+
+
+  body {
+    background-color: #74d072;
+  }
