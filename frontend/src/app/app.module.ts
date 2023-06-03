@@ -18,8 +18,8 @@ import { MainDashboardComponent } from './components/main-dashboard/main-dashboa
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecipesDashboardComponent } from './components/recipes-dashboard/recipes-dashboard.component';
 import { RecipesCardComponent } from './components/recipes-card/recipes-card.component';
-import { AddRecipeToPlanModalComponent } from './components/add-recipe-to-plan-modal/add-recipe-to-plan-modal.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { DisplayRecipeDetailsComponent } from './components/display-recipe-details/display-recipe-details.component';
 
 
 
@@ -35,8 +35,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     MainDashboardComponent,
     RecipesDashboardComponent,
     RecipesCardComponent,
-    AddRecipeToPlanModalComponent,
-    LogoutComponent
+    LogoutComponent,
+    DisplayRecipeDetailsComponent
   ],
   imports: [
     BrowserModule,

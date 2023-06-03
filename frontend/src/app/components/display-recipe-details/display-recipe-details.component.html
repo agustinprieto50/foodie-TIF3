@@ -1,0 +1,9 @@
+<div *ngIf="recipeDetails">
+    <h5>{{recipeDetails.recipe.recipe_name}}</h5>
+    <ul>
+      <li *ngFor="let ingredient of recipeDetails.recipe.ingredients?.ingredient">
+        {{ ingredient.food_name }} - {{ ingredient.ingredient_description }}
+      </li>
+    </ul>
+  </div>
+  

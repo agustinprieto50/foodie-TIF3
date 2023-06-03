@@ -6,6 +6,8 @@ from resources.plan_api import PlanResource, SinglePlanResource, PlanByUserId
 from resources.proxy import ProxyResource, ProxyResourceRecipes
 from resources.recipe_api import RecipeResource
 from resources.user_api import UserResource
+from resources.pedidos_api import EstimateShipping
+from resources.pedidos_api import ConfirmedEstimateOrder
 from models_db import db
 
 
@@ -29,6 +31,9 @@ api.add_resource(ProxyResourceRecipes, '/api/get_recipes/<int:recipe_id>')
 api.add_resource(RecipeResource, '/api/recipe')
 api.add_resource(UserResource, '/api/user') 
 api.add_resource(PlanByUserId, '/api/user_plans/<int:user_id>')  
+api.add_resource(EstimateShipping, '/api/estimate_shipping')
+api.add_resource(ConfirmedEstimateOrder, '/api/confirmed_estimate_order/<string:estimateId>')
+
 
 
 from auth import routes

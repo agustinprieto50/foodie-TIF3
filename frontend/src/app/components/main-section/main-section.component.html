@@ -2,7 +2,8 @@
     <div class="container" style="margin-top: 10px;">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">        
         <div *ngFor="let plan of plans" class="col">
-          <app-plan-card [planTitle]="plan.title" [planDescription]="plan.description"></app-plan-card>
+          <app-plan-card [planObject]="plan"></app-plan-card>
+          
         </div>
       </div>
     </div>

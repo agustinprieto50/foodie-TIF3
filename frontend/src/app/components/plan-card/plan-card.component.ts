@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { GetRecipeDetailsService } from 'src/app/services/get-recipe-details.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-plan-card',
@@ -7,12 +9,12 @@ import { Component, Input } from '@angular/core';
 })
 export class PlanCardComponent {
 
-  @Input() planTitle:any
-  @Input() planDescription:any
+  @Input() planObject:any
 
-
-  constructor(){
+  constructor(private getRecipeDetails: GetRecipeDetailsService){
   }
+
+  
 
 
 
