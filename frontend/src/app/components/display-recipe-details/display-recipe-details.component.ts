@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GetRecipeDetailsService } from 'src/app/services/get-recipe-details.service';
+import { ItemsListService } from 'src/app/services/items-list.service';
 
 @Component({
   selector: 'app-display-recipe-details',
@@ -9,12 +10,33 @@ import { GetRecipeDetailsService } from 'src/app/services/get-recipe-details.ser
 export class DisplayRecipeDetailsComponent implements OnInit {
   @Input() recipe_id:any
   recipeDetails:any
+  loaded:boolean = false
 
-  constructor(private getRecipeDetails: GetRecipeDetailsService){ }
+  constructor(private getRecipeDetails: GetRecipeDetailsService, private itemsService: ItemsListService){ }
 
   ngOnInit() {
     this.getRecipeDetails.getRecipe(this.recipe_id).subscribe((response) => {
       this.recipeDetails = response;
+      this.loaded = true
     });
   }
+
+  addToItemsList(item: string){
+    const itemsList = localStorage.getItem("items")
+    let newList = []
+    if (itemsList){
+      newList = JSON.parse(itemsList)
+    }
+    if (!newList.includes(item)) {
+      newList.push(item)
+      localStorage.setItem('items', JSON.stringify(newList))
+    }
+    else{
+      console.log(item + ': The item has already been added')
+    }
+   
+
+  }
+
+  
 }

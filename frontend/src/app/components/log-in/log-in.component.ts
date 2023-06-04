@@ -22,6 +22,8 @@ export class LogInComponent {
         console.log("Login exitoso",response)
         localStorage.setItem("token",response.access_token)
         localStorage.setItem('user_id', response.id)
+        const emptyList: any[] = []
+        localStorage.setItem('items', JSON.stringify(emptyList))
         this.router.navigate(['/home'])
       })
     })
