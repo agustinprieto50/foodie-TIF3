@@ -8,6 +8,7 @@ from resources.recipe_api import RecipeResource
 from resources.user_api import UserResource
 from resources.pedidos_api import EstimateShipping
 from resources.pedidos_api import ConfirmedEstimateOrder
+from resources.pedidos_api import ShippingOrder
 from models_db import db
 
 
@@ -33,7 +34,7 @@ api.add_resource(UserResource, '/api/user')
 api.add_resource(PlanByUserId, '/api/user_plans/<int:user_id>')  
 api.add_resource(EstimateShipping, '/api/estimate_shipping')
 api.add_resource(ConfirmedEstimateOrder, '/api/confirmed_estimate_order/<string:estimateId>')
-
+api.add_resource(ShippingOrder, '/api/shipping_order')
 
 
 from auth import routes

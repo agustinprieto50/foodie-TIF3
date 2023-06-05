@@ -20,6 +20,7 @@ import { RecipesDashboardComponent } from './components/recipes-dashboard/recipe
 import { RecipesCardComponent } from './components/recipes-card/recipes-card.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DisplayRecipeDetailsComponent } from './components/display-recipe-details/display-recipe-details.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 
@@ -36,7 +37,8 @@ import { DisplayRecipeDetailsComponent } from './components/display-recipe-detai
     RecipesDashboardComponent,
     RecipesCardComponent,
     LogoutComponent,
-    DisplayRecipeDetailsComponent
+    DisplayRecipeDetailsComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
