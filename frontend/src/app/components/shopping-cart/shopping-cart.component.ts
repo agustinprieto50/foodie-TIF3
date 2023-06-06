@@ -8,13 +8,17 @@ import { OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit{
   
-  items:any
+  items:any[] = []
+  isEmpty:boolean = false
   constructor() {}
 
   ngOnInit(){
     const itemsString: string | null = localStorage.getItem('items')
     if (itemsString !== null) {
       this.items = JSON.parse(itemsString);
+    }
+    if (this.items.length === 0){
+      this.isEmpty = true
     }
   }
 

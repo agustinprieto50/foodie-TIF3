@@ -15,6 +15,12 @@ class RecipeResource(Resource):
             db.session.commit()
             return 'Recipe successfully created', 201
         
+    def delete(self):
+        db.session.query(Recipe).delete()
+        db.session.commit()
+        return "All plans have been deleted successfully", 204    
+
+        
     
 
 

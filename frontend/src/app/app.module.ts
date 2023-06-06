@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PlanCardComponent } from './components/plan-card/plan-card.component';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
 import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecipesDashboardComponent } from './components/recipes-dashboard/recipes-dashboard.component';
@@ -21,6 +20,7 @@ import { RecipesCardComponent } from './components/recipes-card/recipes-card.com
 import { LogoutComponent } from './components/logout/logout.component';
 import { DisplayRecipeDetailsComponent } from './components/display-recipe-details/display-recipe-details.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShippingOrderComponent } from './components/shipping-order/shipping-order.component';
 
 
 
@@ -32,13 +32,13 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     CreatePlanModalComponent,
     PlanCardComponent,
     LogInComponent,
-    HomePageComponent,
     MainDashboardComponent,
     RecipesDashboardComponent,
     RecipesCardComponent,
     LogoutComponent,
     DisplayRecipeDetailsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ShippingOrderComponent
   ],
   imports: [
     BrowserModule,

@@ -10,10 +10,11 @@ from resources.pedidos_api import EstimateShipping
 from resources.pedidos_api import ConfirmedEstimateOrder
 from resources.pedidos_api import ShippingOrder
 from models_db import db
-
+from flask_sslify import SSLify
 
 app = Flask(__name__)
 
+# sslify = SSLify(app)
 app.config['JWT_SECRET_KEY'] = 'your_secret_key_here'
 jwt = JWTManager(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -40,6 +41,7 @@ api.add_resource(ShippingOrder, '/api/shipping_order')
 from auth import routes
     #Importar blueprint
 app.register_blueprint(routes.auth)
-
+app.debug = False
+#  ssl_context=('/Users/agustinprieto/Desktop/foodie/cert.pem', '/Users/agustinprieto/Desktop/foodie/key.pem')
 app.run(port=8080)
 

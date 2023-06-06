@@ -14,7 +14,7 @@
             <a class="nav-link active" routerLink="/comidas" aria-current="page" href="#">Comidas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/carrito" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Carrito de Compras
             </a>
             
@@ -29,6 +29,7 @@
                     <app-shopping-cart></app-shopping-cart>
                   </div>
                   <div class="modal-footer">
+                    <a routerLink="/order" class="btn btn-primary">Crear Orden de Delivery</a>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   </div>
                 </div>

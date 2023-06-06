@@ -6,6 +6,9 @@
 
 
 <div *ngIf="recipeDetails">
+  
+
+
     <button type="button" class="btn btn-link" data-bs-toggle="modal" [attr.data-bs-target]="'#ingredientsModal' + recipeDetails.recipe.recipe_id">
         • {{ recipeDetails.recipe.recipe_name }}
     </button>

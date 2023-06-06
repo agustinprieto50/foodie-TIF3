@@ -1,14 +1,45 @@
 <div class="card" style="min-height:10rem;" style="background-color: rgb(226, 255, 226);">
     <div class="card-body d-block h-100">
         <div class="d-flex justify-content-between align-items-center h-100">
-            <h1 class="card-title text-truncate">{{planObject.title}}</h1>
+            <h4 class="card-title text-truncate">{{planObject.title}}</h4>
             <div class="btn-group flex-row-reverse">
             </div>
         </div>
         <p class="card-text multi-line">{{planObject.description}}</p>
-        <h6>Lista de Comidas</h6>
-        <div *ngFor="let recipe of planObject.recipes">
-            <app-display-recipe-details [recipe_id]="recipe.recipe_id_fatsecret_sor" ></app-display-recipe-details>
-        </div>
+        <h5 class="text-decoration-underline">Lista de Comidas</h5>
+        
+        <div *ngIf="planObject.recipes && planObject.recipes.length === 0">
+            <!-- Content to display when planObject.recipes is empty -->
+            <p>Aun no has agregado comidas al plan</p>
+            <a routerLink="/comidas">Ir a la seccion de comidas</a>
+          </div>
+
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item" *ngFor="let recipe of recipeDetails; let isFirst = first" [class.active]="isFirst">
+                    <img [src]="recipe.recipe.recipe_images.recipe_image" class="d-block w-100" alt="Recipe Image">
+                    <app-display-recipe-details [recipe_id]="recipe.recipe.recipe_id" ></app-display-recipe-details>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        <!-- <div *ngFor="let recipe of planObject.recipes">
+            <div [attr.recipe_id]="recipe.recipe_id_fatsecret_sor" style="display: none;"></div>
+
+            
+            
+          
+        </div> -->
+        
     </div>
 </div>
+
+
+  <!-- <app-display-recipe-details [recipe_id]="recipe.recipe_id_fatsecret_sor" ></app-display-recipe-details> -->

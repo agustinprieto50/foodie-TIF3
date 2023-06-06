@@ -35,7 +35,6 @@
                 </div>
                 <div class="modal-body">
                   <form (submit)="onSubmit(recipe.recipe_id)">
-                    <label>{{recipe.recipe_id}}</label>
                     <label style="margin-right: 4px;" for="plan">Select a plan: </label>
                     <ng-container class="d-flex" *ngIf="plans$ | async as plans">
                       <select name="plan" id="plan" [(ngModel)]="selectedPlan">
