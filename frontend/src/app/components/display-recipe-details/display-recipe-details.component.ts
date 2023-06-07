@@ -31,7 +31,11 @@ export class DisplayRecipeDetailsComponent implements OnInit {
       newList = JSON.parse(itemsList)
     }
     if (!newList.includes(item)) {
-      newList.push(item)
+      const min = 300;
+      const max = 600;
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      const newItem = {'item': item, 'price': randomNumber, 'quantity': 1}
+      newList.push(newItem)
       localStorage.setItem('items', JSON.stringify(newList))
       window.location.reload()
     

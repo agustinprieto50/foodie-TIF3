@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #C1FFD5;">
     <div class="container-fluid">
-      <a class="navbar-brand header-font" href="#">Foodie</a>
+      <a class="navbar-brand header-font" routerLink="/home">Foodie</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,12 +26,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <app-shopping-cart></app-shopping-cart>
+              
+                  <app-checkout-process></app-checkout-process>
+
                   </div>
-                  <div class="modal-footer">
-                    <a routerLink="/order" class="btn btn-primary">Crear Orden de Delivery</a>
+                  <!-- <div class="modal-footer">
+                    <a routerLink="/order" class="btn btn-primary" data-bs-dismiss="modal">Crear Orden de Delivery</a>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

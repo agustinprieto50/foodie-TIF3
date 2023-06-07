@@ -1,7 +1,16 @@
-<app-nav-bar></app-nav-bar>
+<form (ngSubmit)="submitForm()" class="needs-validation" novalidate>
+  <div class="mb-3">
+    <label for="street" class="form-label">Calle:</label>
+    <input type="text" id="street" name="street" class="form-control" [(ngModel)]="formData.street" required>
+  </div>
+  <div class="mb-3">
+    <label for="city" class="form-label">Ciudad:</label>
+    <input type="text" id="city" name="city" class="form-control" [(ngModel)]="formData.city" required>
+  </div>
+  <div class="mb-3">
+    <label for="state" class="form-label">Provincia:</label>
+    <input type="text" id="state" name="state" class="form-control" [(ngModel)]="formData.state" required>
+  </div>
+  
 
-<ul>
-    <li *ngFor="let item of items">{{ item }}</li>
-  </ul>
-
-  <button type="button" class="btn btn-primary">Crear Orden</button>
+</form>

@@ -25,7 +25,6 @@ export class PlanCardComponent implements OnInit{
   getDetails(recipe_id:number) {
     this.getRecipeDetails.getRecipe(recipe_id).subscribe((response) => {
       this.recipeDetails.push(response) ;
-      console.log(this.recipeDetails)
     })
 
   }

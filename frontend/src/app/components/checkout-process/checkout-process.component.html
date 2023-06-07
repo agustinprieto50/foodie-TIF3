@@ -1,0 +1,108 @@
+<!-- Step 1 -->
+<div [hidden]="currentStep !== 1">
+    <div class="modal-header">
+      <h5 class="modal-title">Lista de Items</h5>
+    </div>
+    <div class="modal-body">
+      
+        <div *ngIf="isEmpty">
+            <p>El carrito se encuentra vacío</p>
+          </div>
+          
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items">
+                <td>{{ item.item }}</td>
+                <td>{{ item.price | currency }}</td>
+                <td>
+                  <input type="number" class="form-control" [(ngModel)]="item.quantity" min="1" step="1" (click)="getTotal()">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p>Total: {{total | currency}}</p>
+          
+          
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div [hidden]="currentStep !== 2">
+    <div class="modal-header">
+      <h5 class="modal-title">¿Donde querés recibir tu compra?</h5>
+    </div>
+    <div class="modal-body">
+        
+        <form (ngSubmit)="submitForm()" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="street" class="form-label">Calle:</label>
+              <input type="text" id="street" name="street" class="form-control" [(ngModel)]="formData.street" required>
+            </div>
+            <div class="mb-3">
+              <label for="city" class="form-label">Ciudad:</label>
+              <input type="text" id="city" name="city" class="form-control" [(ngModel)]="formData.city" required>
+            </div>
+            <div class="mb-3">
+              <label for="state" class="form-label">Provincia:</label>
+              <input type="text" id="state" name="state" class="form-control" [(ngModel)]="formData.state" required>
+            </div>
+            
+          
+          </form>
+          
+
+    </div>
+
+    
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="previousStep()">Previous</button>
+      <button class="btn btn-primary" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <div [hidden]="currentStep !== 3">
+    <div class="modal-header">
+      <h5 class="modal-title">¿Cómo querés pagar?</h5>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="submitForm()" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="cardNumber" class="form-label">Número de Tarjeta:</label>
+              <input type="text" id="cardNumber" name="cardNumber" class="form-control" [(ngModel)]="formData.cardNumber" required>
+            </div>
+            <div class="mb-3">
+              <label for="cardHolder" class="form-label">Nombre y Apellido:</label>
+              <input type="text" id="cardHolder" name="cardHolder" class="form-control" [(ngModel)]="formData.cardHolder" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="expirationDate" class="form-label">Fecha de Expiración:</label>
+                <input type="text" id="expirationDate" name="expirationDate" class="form-control" [(ngModel)]="formData.expirationDate" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cvv" class="form-label">CVV:</label>
+                <input type="text" id="cvv" name="cvv" class="form-control" [(ngModel)]="formData.cvv" required>
+              </div>
+            </div>
+          </form>
+          
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="previousStep()">Previous</button>
+      <button class="btn btn-primary" (click)="submit()">Submit</button>
+    </div>
+  </div>
+  

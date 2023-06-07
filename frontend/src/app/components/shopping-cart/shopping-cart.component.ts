@@ -10,16 +10,27 @@ export class ShoppingCartComponent implements OnInit{
   
   items:any[] = []
   isEmpty:boolean = false
+  total:number = 0
   constructor() {}
 
   ngOnInit(){
     const itemsString: string | null = localStorage.getItem('items')
     if (itemsString !== null) {
       this.items = JSON.parse(itemsString);
+      this.items.forEach((item)=>{
+        this.total += item['price']
+      })
     }
     if (this.items.length === 0){
       this.isEmpty = true
     }
+  }
+
+  getTotal(){
+    this.total = 0
+    this.items.forEach((item)=>{
+      this.total += item['price']*item['quantity']
+    })
   }
 
 }

@@ -2,6 +2,24 @@
   <p>El carrito se encuentra vacío</p>
 </div>
 
-<ul>
-    <li *ngFor="let item of items">{{ item }}</li>
-  </ul>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.item }}</td>
+      <td>{{ item.price | currency }}</td>
+      <td>
+        <input type="number" class="form-control" [(ngModel)]="item.quantity" min="1" step="1" (click)="getTotal()">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Total: {{total | currency}}</p>

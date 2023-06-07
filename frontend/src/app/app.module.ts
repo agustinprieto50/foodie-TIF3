@@ -21,6 +21,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { DisplayRecipeDetailsComponent } from './components/display-recipe-details/display-recipe-details.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShippingOrderComponent } from './components/shipping-order/shipping-order.component';
+import { CheckoutProcessComponent } from './components/checkout-process/checkout-process.component';
 
 
 
@@ -38,7 +39,8 @@ import { ShippingOrderComponent } from './components/shipping-order/shipping-ord
     LogoutComponent,
     DisplayRecipeDetailsComponent,
     ShoppingCartComponent,
-    ShippingOrderComponent
+    ShippingOrderComponent,
+    CheckoutProcessComponent
   ],
   imports: [
     BrowserModule,
