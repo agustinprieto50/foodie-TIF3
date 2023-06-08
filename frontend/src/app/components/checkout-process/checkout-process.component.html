@@ -1,4 +1,12 @@
-<!-- Step 1 -->
+<div *ngIf="done">
+    <div class="alert alert-success" role="alert">
+        Compra confirmada! Sigue tu envío a través de tu correo electrónico
+      </div>
+</div>
+
+
+<div *ngIf="!done">
+    <!-- Step 1 -->
 <div [hidden]="currentStep !== 1">
     <div class="modal-header">
       <h5 class="modal-title">Lista de Items</h5>
@@ -20,8 +28,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of items">
-                <td>{{ item.item }}</td>
-                <td>{{ item.price | currency }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.value | currency }}</td>
                 <td>
                   <input type="number" class="form-control" [(ngModel)]="item.quantity" min="1" step="1" (click)="getTotal()">
                 </td>
@@ -35,7 +43,7 @@
 
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" (click)="nextStep()">Next</button>
+      <button class="btn btn-primary" (click)="nextStep()">Siguiente</button>
     </div>
   </div>
 
@@ -49,7 +57,7 @@
         <form (ngSubmit)="submitForm()" class="needs-validation" novalidate>
             <div class="mb-3">
               <label for="street" class="form-label">Calle:</label>
-              <input type="text" id="street" name="street" class="form-control" [(ngModel)]="formData.street" required>
+              <input type="text" id="street" name="street" class="form-control" [(ngModel)]="street" required>
             </div>
             <div class="mb-3">
               <label for="city" class="form-label">Ciudad:</label>
@@ -68,8 +76,8 @@
 
     
     <div class="modal-footer">
-      <button class="btn btn-primary" (click)="previousStep()">Previous</button>
-      <button class="btn btn-primary" (click)="nextStep()">Next</button>
+      <button class="btn btn-primary" (click)="previousStep()">Atrás</button>
+      <button class="btn btn-primary" (click)="nextStep()">Siguiente</button>
     </div>
   </div>
 
@@ -101,8 +109,10 @@
           
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" (click)="previousStep()">Previous</button>
-      <button class="btn btn-primary" (click)="submit()">Submit</button>
+      <button class="btn btn-primary" (click)="previousStep()">Atrás</button>
+      <button class="btn btn-primary" (click)="submit()">Confirmar</button>
     </div>
   </div>
   
+</div>
+

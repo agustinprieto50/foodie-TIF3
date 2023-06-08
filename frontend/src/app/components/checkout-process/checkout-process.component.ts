@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { CreateShippingOrderService } from 'src/app/services/create-shipping-order.service';
 
 @Component({
   selector: 'app-checkout-process',
@@ -7,6 +8,9 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./checkout-process.component.css']
 })
 export class CheckoutProcessComponent implements OnInit{
+
+
+  constructor(private createOrder: CreateShippingOrderService){}
   currentStep: number = 1;
   
   nextStep(): void {
@@ -21,12 +25,10 @@ export class CheckoutProcessComponent implements OnInit{
     }
   }
 
-  submit(): void {
-    // Perform submission logic or any other actions on final step
-    // You can close the modal or perform additional tasks as needed
-  }
+ 
 
   items:any[] = []
+  done:any
   isEmpty:boolean = false
   total:number = 0
   street:any
@@ -56,4 +58,41 @@ export class CheckoutProcessComponent implements OnInit{
     // Perform form submission logic here
     console.log(this.formData); // Example: Log form data to the console
   }
+
+
+  submit() {
+    const body = {
+     "referenceId": "Client Internal Reference",
+     "isTest": true,
+     "notificationMail":  "a.prieto@alumno.um.edu.ar",
+     "items": this.items,
+     "waypoints": [
+       {
+         "type": "PICK_UP",
+         "addressStreet": "Chile 1674",
+         "addressAdditional": "Piso 6 Recepción",
+         "city": "Mendoza",
+         "phone": "+59898765432",
+         "name": "Oficina Ciudad Vieja",
+         "instructions": "El ascensor esta roto."
+       },
+       {
+         "type": "DROP_OFF",
+         "addressStreet": this.street,
+         "addressAdditional": "Piso 1, Oficina Delivery",
+         "city": "Mendoza",
+         "phone": "+59812345678",
+         "name": "Agustin",
+         "instructions": "Entregar en mano"
+         
+       }
+     ]
+ 
+    }
+    this.createOrder.post(JSON.stringify(body)).subscribe((response)=>{
+      console.log(response)
+      this.done = true
+    })
+
+   }
 }
