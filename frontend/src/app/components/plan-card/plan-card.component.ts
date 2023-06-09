@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class PlanCardComponent implements OnInit{
   recipeDetails: any[] = [];
+
   @Input() recipe_id: any
   
   @Input() planObject: any;
@@ -17,13 +18,13 @@ export class PlanCardComponent implements OnInit{
 
   ngOnInit() {
       this.planObject.recipes.forEach((recipe:any) => {
-        console.log(recipe.recipe_id_fatsecret_sor)
-        this.getDetails(recipe.recipe_id_fatsecret_sor)
+        this.getDetails(recipe.recipe_id_fatsecret_sor, recipe.day_of_the_week)
       });
   }
 
-  getDetails(recipe_id:number) {
-    this.getRecipeDetails.getRecipe(recipe_id).subscribe((response) => {
+  getDetails(recipe_id:number, day_of_the_week:string) {
+    this.getRecipeDetails.getRecipe(recipe_id).subscribe((response:any) => {
+      response['day_of_the_week'] = day_of_the_week
       this.recipeDetails.push(response) ;
     })
 

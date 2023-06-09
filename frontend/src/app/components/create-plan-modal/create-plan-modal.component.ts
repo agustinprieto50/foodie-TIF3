@@ -16,12 +16,17 @@ export class CreatePlanModalComponent {
 
   title:any
   description:any
+  startDate:any
+  endDate:any
 
   constructor(private createPlanService: CreatePlanService, private http:HttpClient, 
               private activeModal: NgbActiveModal, private router: Router){}
 
   onSubmit(){
-    const body = {"title": this.title, "description": this.description}
+    console.log(this.startDate)
+    console.log(this.endDate)
+
+    const body = {"title": this.title, "description": this.description, "from_date": this.startDate, "to_date": this.endDate}
     const token = localStorage.getItem('token')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

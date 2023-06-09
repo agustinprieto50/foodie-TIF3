@@ -35,22 +35,40 @@
                 </div>
                 <div class="modal-body">
                   <form (submit)="onSubmit(recipe.recipe_id)">
-                    <label style="margin-right: 4px;" for="plan">Select a plan: </label>
-                    <ng-container class="d-flex" *ngIf="plans$ | async as plans">
-                      <select name="plan" id="plan" [(ngModel)]="selectedPlan">
-                        <option *ngFor="let plan of plans" [value]="plan.id" (click)="onSelectPlan(plan.id)">
-                          {{ plan.title }}
-                        </option>
+                    <div class="mb-3">
+                      <label for="plan" class="form-label">Selecciona un plan:</label>
+                      <ng-container class="d-flex" *ngIf="plans$ | async as plans">
+                        <select name="plan" id="plan" [(ngModel)]="selectedPlan" class="form-select">
+                          <option *ngFor="let plan of plans" [value]="plan.id" (click)="onSelectPlan(plan.id)">
+                            {{ plan.title }}
+                          </option>
+                        </select>
+                      </ng-container>
+                    </div>
+                    <div class="mb-3">
+                      <label for="day" class="form-label">Selecciona un día de la semana:</label>
+                      <select name="day" id="day" [(ngModel)]="selectedDay" class="form-select">
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miércoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sábado">Sábado</option>
+                        <option value="Domingo">Domingo</option>
                       </select>
-                    </ng-container>
-                    <button style="float: right;" class="btn btn-primary" type="submit">Agregar</button>
+                    </div>
+                    <button class="btn btn-primary float-end" type="submit" data-bs-dismiss="modal">Agregar</button>
                   </form>
                 </div>
               </div>
             </div>
           </div>
+          
+          
+
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+

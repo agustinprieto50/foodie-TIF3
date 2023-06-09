@@ -20,6 +20,7 @@ export class RecipesDashboardComponent implements OnInit{
   recipeId:any
   plans$!: Observable<any[]>;
   selectedPlan:number = 0;
+  selectedDay:any
   constructor(
     private getRecipesServices: GetRecipesService, 
     private getPlans: GetPlansService, 
@@ -42,7 +43,7 @@ export class RecipesDashboardComponent implements OnInit{
 
 
   onSubmit(recipe_id:number){
-    this.addRecipeToPlan.addRecipe(recipe_id, this.selectedPlan).subscribe((response)=>{
+    this.addRecipeToPlan.addRecipe(recipe_id, this.selectedPlan, this.selectedDay).subscribe((response)=>{
       console.log(response)
       this.router.navigate(['/home'])
       

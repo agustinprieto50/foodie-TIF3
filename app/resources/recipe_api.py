@@ -10,7 +10,8 @@ class RecipeResource(Resource):
         if data:
             plan_id = data['plan_id']
             recipe_id_fatsecret_sor = data['recipe_id_fatsecret_sor']
-            recipe = Recipe(plan_id=plan_id, recipe_id_fatsecret_sor=recipe_id_fatsecret_sor)
+            day_of_the_week = data['day_of_the_week']
+            recipe = Recipe(plan_id=plan_id, recipe_id_fatsecret_sor=recipe_id_fatsecret_sor, day_of_the_week=day_of_the_week)
             db.session.add(recipe)
             db.session.commit()
             return 'Recipe successfully created', 201

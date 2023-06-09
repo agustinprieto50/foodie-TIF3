@@ -16,7 +16,9 @@ class PlanResource(Resource):
         if data:
             title = data['title']
             description = data['description']
-            plan = Plan(title=title, description=description, created_by=created_by)
+            from_date = data['from_date']
+            to_date = data['to_date']
+            plan = Plan(title=title, description=description, created_by=created_by, from_date=from_date, to_date=to_date)
             db.session.add(plan)
             db.session.commit()
             return "Plan created xsuccessfuly", 201
@@ -46,7 +48,7 @@ class SinglePlanResource(Resource):
                 return plan.to_json(), 200
 
     def delete(self, plan_id):
-        plan = Plan.query.filter_by(id=plan_id).all()
+        plan = Plan.query.filter_by(id=plan_id).first()
         if plan:
             db.session.delete(plan)
             db.session.commit()

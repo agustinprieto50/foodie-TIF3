@@ -22,6 +22,7 @@ import { DisplayRecipeDetailsComponent } from './components/display-recipe-detai
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShippingOrderComponent } from './components/shipping-order/shipping-order.component';
 import { CheckoutProcessComponent } from './components/checkout-process/checkout-process.component';
+import { InformationPageComponent } from './components/information-page/information-page.component';
 
 
 
@@ -40,7 +41,8 @@ import { CheckoutProcessComponent } from './components/checkout-process/checkout
     DisplayRecipeDetailsComponent,
     ShoppingCartComponent,
     ShippingOrderComponent,
-    CheckoutProcessComponent
+    CheckoutProcessComponent,
+    InformationPageComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ class Plan(db.Model):
     description = db.Column(db.Text, nullable=False)
     created_by = db.Column(db.ForeignKey('user.user_id'), nullable=False)
     recipes = db.relationship('Recipe', backref='plan', lazy=False)
+    from_date = db.Column(db.Text, nullable=False)
+    to_date = db.Column(db.Text, nullable=False)
     
 
     def to_json(self):
@@ -15,5 +17,7 @@ class Plan(db.Model):
             'title': self.title,
             'description': self.description,
             'created_by': self.created_by,
-            'recipes': recipes
+            'recipes': recipes,
+            'from_date': self.from_date,
+            'to_date': self.to_date
         }
