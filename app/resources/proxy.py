@@ -21,7 +21,7 @@ class ProxyResource(Resource):
         token = self.post()
         access_token = token['access_token']
         headers = {'Authorization': 'Bearer ' + access_token}
-        data = {'method': 'recipes.search.v3', 'format': 'json'}
+        data = {'method': 'recipes.search.v3', 'format': 'json', 'max_results': 50}
         response = requests.get('https://platform.fatsecret.com/rest/server.api', headers=headers, data=data)       
         return jsonify(response.json()) 
 

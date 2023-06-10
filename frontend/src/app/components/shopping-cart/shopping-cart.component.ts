@@ -14,11 +14,13 @@ export class ShoppingCartComponent implements OnInit{
   constructor() {}
 
   ngOnInit(){
+    this.getTotal()
+    console.log(this.total)
     const itemsString: string | null = localStorage.getItem('items')
     if (itemsString !== null) {
       this.items = JSON.parse(itemsString);
       this.items.forEach((item)=>{
-        this.total += item['price']
+        this.total += item['value']
       })
     }
     if (this.items.length === 0){
@@ -29,7 +31,7 @@ export class ShoppingCartComponent implements OnInit{
   getTotal(){
     this.total = 0
     this.items.forEach((item)=>{
-      this.total += item['price']*item['quantity']
+      this.total += item['value']*item['quantity']
     })
   }
 

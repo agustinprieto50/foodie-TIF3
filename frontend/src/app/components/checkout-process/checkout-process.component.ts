@@ -37,7 +37,7 @@ export class CheckoutProcessComponent implements OnInit{
     if (itemsString !== null) {
       this.items = JSON.parse(itemsString);
       this.items.forEach((item)=>{
-        this.total += item['price']
+        this.total += item['value']
       })
     }
     if (this.items.length === 0){
@@ -48,7 +48,7 @@ export class CheckoutProcessComponent implements OnInit{
   getTotal(){
     this.total = 0
     this.items.forEach((item)=>{
-      this.total += item['price']*item['quantity']
+      this.total += item['value']*item['quantity']
     })
   }
 
